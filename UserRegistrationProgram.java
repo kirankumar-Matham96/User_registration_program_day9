@@ -1,3 +1,4 @@
+//import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationProgram
@@ -14,7 +15,7 @@ public class UserRegistrationProgram
 		return Pattern.matches("^[A-Z]{1}[a-z]{2,}", lastName);
 	}
 
-	//UC-3: validating email
+	//UC-3 & 9: validating email
 	public static boolean validateEmail(String email)
 	{
 		return Pattern.matches("[-a-zA-Z0-9+]+.[-a-zA-Z0-9]*@[a-zA-Z0-9]+(.[a-zA-Z0-9]+)*.[a-zA-Z]{2,}$", email);
@@ -31,10 +32,8 @@ public class UserRegistrationProgram
 	{
 		/*
 		 * Rule1: minimum 8 characters
-		 * Rule2: at least 1 upper-case
-		 * Rule3: at least 1 numeric
 		 */
-		return Pattern.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8}", passWord);
+		return Pattern.matches("(?=.*[0-9])(?=.[a-z])(?=.*[A-Z])^[0-9a-zA-Z!@#$%^&*()_+]{8,}$", passWord);
 	}
 
 	//main method
@@ -43,14 +42,36 @@ public class UserRegistrationProgram
 		String firstName = "Rahul";
 		String lastName = "Shinde";
 		long phoneNumber = 918688332960L;
-		String email = "Rahul.Shinde@gmail.com";
-		String passWord = "hT6dUv2g";
+		String email1 = "Rahul.Shinde@gmail.com.in";
+		String email2 = "Rahul.Shinde@gmail.com";
+		String email3 = "Rahul-Shinde@gmail.com";
+		String email4 = "Rahul.123@gmail.com";
+		String email5 = "Rahul.Shinde123@gmail.com";
+		String email6 = "RahulShinde.123@gmail.com";
+		String email7 = "Rahul123.Shinde123@gmail.com";
+		String email8 = "Rahul123.Shinde123@gmail.com.com";
+		String email9 = "Rahul123.Shinde123@yahoo.com.in";
+		String email10 = "Rahul-123.Shinde-123@rahul.com.in";
+		String passWord = "Enery@123gyhnj168745yJY";
 
 		System.out.println("first name: "+validateFirstName(firstName));
 		System.out.println("last name: "+validateLastName(lastName));
-		System.out.println("email: "+validateEmail(email));
+
+		//emails
+		System.out.println("emails:");
+		System.out.println(validateEmail(email1));
+		System.out.println(validateEmail(email2));
+		System.out.println(validateEmail(email3));
+		System.out.println(validateEmail(email4));
+		System.out.println(validateEmail(email5));
+		System.out.println(validateEmail(email6));
+		System.out.println(validateEmail(email7));
+		System.out.println(validateEmail(email8));
+		System.out.println(validateEmail(email9));
+		System.out.println(validateEmail(email10));
 		System.out.println("phone numbar: "+validatePhoneNumber(Long.toString(phoneNumber)));
 		System.out.println("password: "+validatePassWord(passWord));
 
 	}
 }
+
