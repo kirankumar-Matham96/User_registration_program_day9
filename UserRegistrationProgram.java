@@ -32,8 +32,9 @@ public class UserRegistrationProgram
 		/*
 		 * Rule1: minimum 8 characters
 		 * Rule2: at least 1 upper-case
+		 * Rule3: at least 1 numeric
 		 */
-		return Pattern.matches("(?=.*[A-Z])(?=.*[a-z]).{8}", passWord);
+		return Pattern.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8}", passWord);
 	}
 
 	//main method
@@ -43,7 +44,7 @@ public class UserRegistrationProgram
 		String lastName = "Shinde";
 		long phoneNumber = 918688332960L;
 		String email = "Rahul.Shinde@gmail.com";
-		String passWord = "hTydUvjg";
+		String passWord = "hT6dUv2g";
 
 		System.out.println("first name: "+validateFirstName(firstName));
 		System.out.println("last name: "+validateLastName(lastName));
