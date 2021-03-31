@@ -1,4 +1,3 @@
-//import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationProgram
@@ -21,10 +20,19 @@ public class UserRegistrationProgram
 		return Pattern.matches("[-a-zA-Z0-9+]+.[-a-zA-Z0-9]*@[a-zA-Z0-9]+(.[a-zA-Z0-9]+)*.[a-zA-Z]{2,}$", email);
 	}
 
-	//UC-4: validating mobile number
+	//UC-4: validating predefined mobile number
 	public static boolean validatePhoneNumber(String phoneNumber)
 	{
 		return Pattern.matches("^[91]{2}[0-9]{10}",phoneNumber);
+	}
+
+	//UC-5: validating password
+	public static boolean validatePassWord(String passWord)
+	{
+		/*
+		 * Rule1: minimum 8 characters
+		 */
+		return Pattern.matches("(?=.*).{8}", passWord);
 	}
 
 	//main method
@@ -32,15 +40,15 @@ public class UserRegistrationProgram
 	{
 		String firstName = "Rahul";
 		String lastName = "Shinde";
-		String email = "Rahul.Shinde@gmail.com.in";
 		long phoneNumber = 918688332960L;
+		String email = "Rahul.Shinde@gmail.com";
+		String passWord = "htyduvjg";
 
 		System.out.println("first name: "+validateFirstName(firstName));
 		System.out.println("last name: "+validateLastName(lastName));
 		System.out.println("email: "+validateEmail(email));
-
-		//converted long into string before passing phone number
 		System.out.println("phone numbar: "+validatePhoneNumber(Long.toString(phoneNumber)));
+		System.out.println("password: "+validatePassWord(passWord));
 
 	}
 }
