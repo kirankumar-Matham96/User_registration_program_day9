@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+//import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationProgram
@@ -20,14 +21,18 @@ public class UserRegistrationProgram
 	}
 
 	/*
-	 * UC-3: validating email
+	 * UC-3 & 9: validating email
 	 */
 	public static String validateEmail(String email)
 	{
-		if(Pattern.matches("^[-a-zA-Z0-9+]+(.{1}[-a-zA-Z0-9])*@([a-zA-Z0-9]+)(.[a-zA-Z]+)?.[a-zA-Z]{2,}$", email))
+		if(Pattern.matches("^(?!\\.)[A-Za-z0-9]+([._%+-]?[0-9])*@[A-Za-z0-9-]+\\.[a-zA-Z]{2,}(\\.[A-Za-z]{2,})?$",email))
+		{
 			return "valid";
+		}
 		else
+		{
 			return "invalid";
+		}
 	}
 
 	/*
@@ -77,6 +82,13 @@ public class UserRegistrationProgram
 		long phoneNumber = 918688332960L;
 		String passWord = "Anap9P#lesL@d65ef";
 
+
+		System.out.println("first name: "+validateFirstName(firstName));
+		System.out.println("last name: "+validateLastName(lastName));
+
+		System.out.println("phone numbar: "+validatePhoneNumber(Long.toString(phoneNumber)));
+		System.out.println("password: "+validatePassWord(passWord));
+
 		//valid email
 		addToEmailList("Rahul@gmail.com");
 		addToEmailList("Rahul-100@gmail.com");
@@ -100,11 +112,7 @@ public class UserRegistrationProgram
 		addToEmailList("Rahul.@gmail.com");
 		addToEmailList("Rahul@Rahul@gmail.com");
 		addToEmailList("Rahul@gmail.com.1a");
-		addToEmailList("Rahul@gmail.com.aa.au");
 
-		System.out.println("first name: "+validateFirstName(firstName));
-		System.out.println("last name: "+validateLastName(lastName));
-		System.out.println("phone numbar: "+validatePhoneNumber(Long.toString(phoneNumber)));
-		System.out.println("password: "+validatePassWord(passWord));
 	}
 }
+
